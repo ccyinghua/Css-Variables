@@ -1,0 +1,85 @@
+/* css variables基础使用 */
+:root{
+	--content1:"abc";
+	--content2:"efg";
+	--width:calc(100px + 200px);
+	--btn-bg:#279cff;
+	--字体:18px;
+}
+.btn_box:before{
+	content:var(--content1)' with add';
+	display:block;
+	line-height: 50px;
+}
+.btn_box:after{
+	content:var(--content1)','var(--content2);
+	display:block;
+	line-height: 50px;
+}
+.login_btn{
+	width:var(--width);
+	height:50px;
+	border-radius:30px;
+	border:0;
+	background: var(--btn-bg);
+	box-shadow: 0 5px 5px rgba(39,156,255,.42);
+	text-align: center;
+	font-size:var(--字体);
+	line-height: 50px;
+	color:#fff;
+	cursor:pointer;
+	outline:none;
+}
+
+
+
+/* css variables作用域 */
+:root { --color: blue; }
+.divbox { --color: green; }
+#alert { --color: red; }
+div{
+	color: var(--color);
+	width:300px;
+	line-height: 50px;
+	text-align: center;
+}
+
+
+/* css variables媒体查询 */
+div {
+  	--divcolor: #7F583F;
+  	--bg: #F7EFD2;
+}
+.mediabox {
+  	color: var(--divcolor);
+  	background: var(--bg);
+}
+@media screen and (min-width: 768px) {
+  div {
+    --divcolor: #F7EFD2;
+    --bg: #7F583F;
+  }
+}
+
+/* css variables 兼容性 */
+@supports ( (--a: 0)) {
+    /* supported */
+    ul{
+    	--ul:#e6e6e6;
+    	background:var(--ul);
+    }
+}
+
+@supports ( not (--a: 0)) {
+    /* not supported */
+    ul{
+    	background:pink;
+    }
+}
+
+
+/* Js操作css variables */
+:root{
+    --testMargin:75px;
+}
+

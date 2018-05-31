@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="./demo.css">
+</head>
+<body>
+    <h3>css variables 基础使用</h3>
+    <div class="btn_box">
+        <button type="button" class="login_btn">登录</button>
+    </div>
+    
+    <h3>css variables 作用域</h3>
+    <div>蓝色</div>
+    <div class="divbox">绿色</div>
+    <div class="divbox" id="alert">红色</div>
+
+
+    <h3>css variables 媒体查询</h3>
+    <div class="mediabox">媒体查询</div>
+
+    <h3>css variables 兼容性</h3>
+    <ul><li>abababab</li></ul>
+
+</body>
+</html>
+<script>
+    // css variables 兼容性
+    if (window.CSS && window.CSS.supports && window.CSS.supports('--a', 0)) {
+        alert('CSS properties are supported');
+    } else {
+        alert('CSS properties are NOT supported');
+    }
+
+    
+    /**
+      * Js操作css Variable
+      */
+    //  读取
+    var root = getComputedStyle(document.documentElement);
+    var cssVariable1 = root.getPropertyValue('--testMargin').trim();
+    console.log(cssVariable1); // '75px'
+     
+    // 写入
+    document.documentElement.style.setProperty('--testMargin', '100px');
+    var cssVariable2 = root.getPropertyValue('--testMargin').trim();
+    console.log(cssVariable2);  // '100px'
+
+    // 删除
+    document.documentElement.style.removeProperty('--testMargin');
+    var cssVariable3 = root.getPropertyValue('--testMargin').trim();
+    console.log(cssVariable3); // '75px''
+
+</script>
