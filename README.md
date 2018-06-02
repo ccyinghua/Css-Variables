@@ -65,7 +65,9 @@ var(--color)
 
 #### 二、作用域
 
-变量是遵循CSS语法的优先级高低的，`Id > class > 标签 > *` ,如果变量所在的选择器和使用变量的元素没有交集,是没有效果的。
+1、变量是遵循CSS语法的优先级高低的 `Id > class > 标签 > *`<br>
+2、注意并无!important这种用法；<br> 
+3、如果变量所在的选择器和使用变量的元素没有交集,是没有效果的。
 
 ```html
 <div>蓝色</div>
@@ -86,8 +88,28 @@ div{
 ```
 ![image](https://github.com/ccyinghua/Css-Variables/blob/master/assets/2.jpg?raw=true)
 
+#### 三、响应式
 
-#### 三、注意事项
+```css
+div {
+  --color: #7F583F;
+  --bg: #F7EFD2;
+}
+
+.mediabox {
+  color: var(--color);
+  background: var(--bg);
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --color:  #F7EFD2;
+    --bg: #7F583F;
+  }
+}
+```
+
+#### 四、注意事项
 
 1、属性名(例：width/height/margin....等)不可以走变量
 
@@ -188,28 +210,6 @@ h3 {
 
 8、图片地址，如url(var(--image-url)) ，不会生效
 
-#### 四、响应式
-
-```css
-div {
-  --color: #7F583F;
-  --bg: #F7EFD2;
-}
-
-.mediabox {
-  color: var(--color);
-  background: var(--bg);
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    --color:  #F7EFD2;
-    --bg: #7F583F;
-  }
-}
-```
-
-
 #### 五、兼容性处理
 
 检测浏览器是否支持CSS自定义属性的方法。
@@ -234,7 +234,6 @@ if (window.CSS && window.CSS.supports && window.CSS.supports('--a', 0)) {
     alert('CSS properties are NOT supported');
 }
 ```
-
 
 #### 六、JS操作变量
 
